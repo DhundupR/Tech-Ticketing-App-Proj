@@ -1,8 +1,10 @@
 
 
-  // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  import { getAuth} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+  import { createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,6 +25,8 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 
+  const auth = getAuth(app)
+  console.log(auth)
 
   console.log(app)
 
@@ -64,6 +68,15 @@ function authSignInWithEmail() {
 
 function authCreateAccountWithEmail() {
     console.log("Sign up with email and password")
+    const email = emailInputEl.value
+    const password= passwordInputEl.value 
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        showLoggedInView()
+        })
+        .catch((error) => {
+        console.error(error.message)
+        });
 }
 
 /* == Functions - UI Functions == */
