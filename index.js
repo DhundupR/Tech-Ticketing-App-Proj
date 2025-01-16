@@ -5,6 +5,7 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
   import { getAuth} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
   import { createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+  import { signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,6 +37,7 @@ const viewLoggedOut = document.getElementById("logged-out-view")
 const viewLoggedIn = document.getElementById("logged-in-view")
 
 const signInWithGoogleButtonEl = document.getElementById("sign-in-with-google-btn")
+const signOutButtonEl = document.getElementById("sign-out-btn")
 
 const emailInputEl = document.getElementById("email-input")
 const passwordInputEl = document.getElementById("password-input")
@@ -46,7 +48,7 @@ const createAccountButtonEl = document.getElementById("create-account-btn")
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
-
+signOutButtonEl.addEventListener("click", authSignOut)
 signInButtonEl.addEventListener("click", authSignInWithEmail)
 createAccountButtonEl.addEventListener("click", authCreateAccountWithEmail)
 
@@ -75,8 +77,16 @@ function authCreateAccountWithEmail() {
         showLoggedInView()
         })
         .catch((error) => {
-        console.error(error.message)
+            console.error(error.message)
         });
+}
+
+function authSignOut(){
+    signOut(auth).then(() => {
+        showLoggedInView()
+      }).catch((error) => {
+         console.error(error.message)
+      });
 }
 
 /* == Functions - UI Functions == */
