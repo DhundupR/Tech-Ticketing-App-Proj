@@ -51,68 +51,85 @@
             </div>
         </section>
         
-        <section id="logged-in-view">
-            
-           <div class="container">
-                <label class="text-box">Name</label>
-                <input class="new-Container" type="email">
-                
-                <label class="text-box">Email</label>
-                <input class="new-Container" type="email">
+        
 
-                <label class="text-box">Question 1</label>
-                <input class="new-Container" type="email">
+       
+ 
 
-                <label class="text-box">Question 2</label>
-                <input class="new-Container" type="email">
-
-                <label class="text-box">Question 3</label>
-                <input class="new-Container" type="email">
-
-                <label class="text-box">Question 4</label>
-                <input class="new-Container" type="email">
-
-                <label class="text-box">Question 5</label>
-                <input class="new-Container" type="email">
-           </div>
-            
-                    
-            
-        </section>
-
-
-
-
-        <section id="logged-in-view">
-            <div class="container">
-                <!-- log out button-->
-                <nav>
-                    <button id="sign-out-btn" class="icon-btn">
-                        <img src="logOut.jpg" class="icon-img-btn">
-                    </button>
-                </nav>
-
-                <div class="app-container">
-                    <div class="user-section">
-                        <img id="user-profile-picture">
-                        <h2 id="user-greeting"></h2>
+            <section id="logged-in-view">
+                <header> 
+                    <div class="flex-container">
+                        <div>
+                            <img id="b-tech" src="header_logo.png" alt="Brooklyn Tech Logo">
+                        </div>
+                        <div class="intro">
+                            <h1>Brooklyn Technical High School</h1>
+                        </div>
                     </div>
+                </header>
+
+
+                <div class="main-content">
+                    <h1 class="Header"> Tech Ticketing Form</h1>
+                    <div class="form-content">
+                    <form id="survey-form">
+                        <label for="name" id="name-label">Name:</label>
+                        <input id="name" type="text" required placeholder="Enter your name" />
+                        <label for="email" id="email-label">Email:</label>
+                        <input id="email" type="email" required placeholder="Enter your email" />
+                    
+                        <label for="dropdown">Which option best describes the severity of the problem?</label>
+                        <select id="dropdown">
+                            <option value="Major">Major</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Unsure">Unsure</option>
+                        </select>
+
+                        <label for="room" id="room-label">Room:</label>
+                        <input id="room" type="text" required placeholder="Enter your room number" />
+                        
+                        <label for="dropdown-2">Device Affected?</label>
+                        <select id="dropdown-2">
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+
+                        <label for="issue" id="issue-label">Describe Your Problem:</label>
+                        <textarea id="issue" required placeholder="Enter your email"></textarea>
+                        
+                        
+
+                    </form>
+
+                    <button id="submit-btn" class="primary-btn">Submit</button>
+                    
+                    <button id="logout-btn" class="primary-btn">LogOut</button>
+                    
+                    </div>
+                    
+
+
+                    
+                        
+                    
                 </div>
+                <button id="sign-out-btn" class="icon-btn">
+                    <img src="logOut.jpg" class="icon-img-btn">
+                </button>
+               
+                
 
                 
-                <div class="container">
-                    <div class="post-section">
+                        
+                
+            </section>
 
-                        
-                        <textarea id="post-input" placeholder="Write down Complaints"></textarea>
-                        
-                        
-                        <button id="post-btn" class="primary-btn">Post</button>
-                    </div> 
-                </div> 
-                    
-            </div>
-        </section>
+        
+        
+
+        
         <script src="index.js" type="module"></script>
     </body>
 </html>
