@@ -37,7 +37,7 @@ const viewLoggedOut = document.getElementById("logged-out-view")
 const viewLoggedIn = document.getElementById("logged-in-view")
 
 const signInWithGoogleButtonEl = document.getElementById("sign-in-with-google-btn")
-const signOutButtonEl = document.getElementById("sign-out-btn")
+const signOutButtonEl = document.getElementById("logout-btn")
 
 const emailInputEl = document.getElementById("email-input")
 const passwordInputEl = document.getElementById("password-input")
@@ -45,13 +45,22 @@ const passwordInputEl = document.getElementById("password-input")
 const signInButtonEl = document.getElementById("sign-in-btn")
 const createAccountButtonEl = document.getElementById("create-account-btn")
 
+const nameEl = document.getElementById("name")
+const emailEl = document.getElementById("email")
+const dropDownEl = document.getElementById("dropdown")
+const dropDown2El = document.getElementById("dropdown-2")
+const issueEl = document.getElementById("issue")
+
+const submitButtonEl = document.getElementById("submit-btn")
+
+
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
 signOutButtonEl.addEventListener("click", authSignOut)
 signInButtonEl.addEventListener("click", authSignInWithEmail)
 createAccountButtonEl.addEventListener("click", authCreateAccountWithEmail)
-
+submitButtonEl.addEventListener("click",submitAction)
 /* === Main Code === */
 
 showLoggedOutView()
@@ -59,7 +68,16 @@ showLoggedOutView()
 /* === Functions === */
 
 /* = Functions - Firebase - Authentication = */
+function submitAction(){
+    console.log(nameEl.value)
+    console.log(emailEl.value)
+    console.log(dropDownEl.value)
+    console.log(dropDown2El.value)
+    console.log(issueEl.value)
 
+
+    
+}
 function authSignInWithGoogle() {
     console.log("Sign in with Google")
 }
@@ -82,8 +100,10 @@ function authCreateAccountWithEmail() {
 }
 
 function authSignOut(){
+   
     signOut(auth).then(() => {
         showLoggedInView()
+        
       }).catch((error) => {
          console.error(error.message)
       });
@@ -108,3 +128,6 @@ function showElement(element) {
 function hideElement(element) {
     element.style.display = "none"
 }
+
+
+showLoggedInView()
