@@ -12,14 +12,7 @@
     --primary-font: 'Cabin', sans-serif;
     --seconday-font: 'Calistoga', sans-serif;
     
-    --border-width: 2px;
-    --element-border-radius: 5px;
     
-    --button-height: 5px;
-    
-    --small-button-height: 2px;
-    
-    --element-padding: 0.8em;
     
     --maximum-width: 250px;
 }
@@ -173,6 +166,15 @@ input, button, textarea {
     border-radius: var(--element-border-radius);
     width: 100%;
     box-sizing: border-box;
+
+    --border-width: 2px;
+    --element-border-radius: 5px;
+    
+    --button-height: 15px;
+    
+    --small-button-height: 2px;
+    
+    --element-padding: 0.8em;
  }
  
  
@@ -181,6 +183,8 @@ input, button, textarea {
     text-align: center;
     border: var(--border-width) solid var(--dark-color);
  }
+
+
  
  
  input:focus, button:focus, textarea:focus {
@@ -310,6 +314,7 @@ classes to make the sign out buttons work
 }
 
 #logged-in-view {
+    
     display: none;
 }
 /* === Post Section === */
@@ -334,44 +339,99 @@ classes to make the sign out buttons work
     display:flex;
     flex-direction: row;
     align-content: center;
-    justify-content: space-around;
-    background:black;
-    margin: 0 auto;
 }
 
-.mini_container{
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-    vertical-align: top;
-    text-align: center;
-}
-
-.new-Container{
-    max-width: max-content;
-    height: 45px;
-    background-color: #747E79;
-    border-radius: .5rem;
-    padding: 0 1rem;
-    border: 2px solid transparent;
-    font-size: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.text-box{
-    
+#name, #email, #number, #dropdown, #issue, #room, #dropdown-2 {
     display: block;
-    margin-bottom: .3rem;
+    width: 100%;
+    height: 35px;
+    padding: 5px 10px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#issue {
+    height:100px;
+    text-align: unset;
+    
+}
+
+header {
+    width: 100%;
+    background-color: #f8f9fa; 
+    padding: 10px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+   
+
+
+}
+
+#b-tech {
+    position: static;
+    height: 100%;
+    max-width: 120px;
+    
+    
+}
+.intro {
+    right:0;
+    text-align: center;
+    font-family: "playfair-display", serif;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    font-size:x-large
+    
+   
 }
 
 
 
-input[type="text"],
-input[type="email"],
-textarea {
-border:0;
-border-bottom: 3px solid black;
-padding: 10px;
+label[for=name], 
+label[for=email],
+label[for=number],
+label[for=dropdown],
+label[for=dropdown-2],
+label[for=issue],
+label[for=room] {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.Header {
+    text-align: center;
+    color:white
 
 }
+
+.main-content {
+    position: relative;
+    top: 490px;
+    background-color:hsl(212, 94%, 20%);
+    max-width: 650px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    margin: 0 auto;
+   
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    z-index: 2;
+    
+    
+    
+  
+  }
+
+  
