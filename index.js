@@ -77,7 +77,7 @@ function submitAction(){
   console.log(dropDownEl.value)
   console.log(dropDown2El.value)
   console.log(issueEl.value)
-  sendEmail()
+  authSignOut();
 }
 
 
