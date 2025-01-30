@@ -81,6 +81,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    
+
 }
 
 * /*=== User Section === */
@@ -166,6 +168,7 @@ input, button, textarea {
     border-radius: var(--element-border-radius);
     width: 100%;
     box-sizing: border-box;
+    background-color: wheat;
 
     --border-width: 2px;
     --element-border-radius: 5px;
@@ -314,7 +317,7 @@ classes to make the sign out buttons work
 }
 
 #logged-in-view {
-    
+    background-color: wheat;
     display: none;
 }
 /* === Post Section === */
@@ -362,7 +365,7 @@ classes to make the sign out buttons work
 
 header {
     width: 100%;
-    background-color: #f8f9fa; 
+    background-color: wheat; 
     padding: 10px 0;
     position: absolute;
     top: 0;
