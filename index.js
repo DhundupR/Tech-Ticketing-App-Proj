@@ -1,37 +1,40 @@
 
 
 // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
-  import { getAuth} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
-  import { createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
-  import { signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+import { createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+import { signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
+import { sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBJNmTY9BklKaLG4xRC6bIqBzfbEvPHHlE",
-    authDomain: "tech-ticketing-app-f53ba.firebaseapp.com",
-    databaseURL: "https://tech-ticketing-app-f53ba-default-rtdb.firebaseio.com",
-    projectId: "tech-ticketing-app-f53ba",
-    storageBucket: "tech-ticketing-app-f53ba.firebasestorage.app",
-    messagingSenderId: "952763182317",
-    appId: "1:952763182317:web:3751065617e59619dd70e4",
-    measurementId: "G-ZXYQ5RL9DV"
-  };
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBJNmTY9BklKaLG4xRC6bIqBzfbEvPHHlE",
+  authDomain: "tech-ticketing-app-f53ba.firebaseapp.com",
+  databaseURL: "https://tech-ticketing-app-f53ba-default-rtdb.firebaseio.com",
+  projectId: "tech-ticketing-app-f53ba",
+  storageBucket: "tech-ticketing-app-f53ba.firebasestorage.app",
+  messagingSenderId: "952763182317",
+  appId: "1:952763182317:web:3751065617e59619dd70e4",
+  measurementId: "G-ZXYQ5RL9DV"
+};
 
-  const auth = getAuth(app)
-  console.log(auth)
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-  console.log(app)
+const auth = getAuth(app)
+console.log(auth)
 
-  /* == UI - Elements == */
+console.log(app)
+
+/* == UI - Elements == */
 
 const viewLoggedOut = document.getElementById("logged-out-view")
 const viewLoggedIn = document.getElementById("logged-in-view")
@@ -69,64 +72,84 @@ showLoggedOutView()
 
 /* = Functions - Firebase - Authentication = */
 function submitAction(){
-    console.log(nameEl.value)
-    console.log(emailEl.value)
-    console.log(dropDownEl.value)
-    console.log(dropDown2El.value)
-    console.log(issueEl.value)
-
-
-    
+  console.log(nameEl.value)
+  console.log(emailEl.value)
+  console.log(dropDownEl.value)
+  console.log(dropDown2El.value)
+  console.log(issueEl.value)
+  sendEmail()
 }
+
+
+function sendEmail(){
+  console.log("Send email")
+  sendEmailVerification(auth.currentUser)
+  .then(() => {
+    // Email verification sent!
+    // ...
+  });
+}
+
 function authSignInWithGoogle() {
-    console.log("Sign in with Google")
+  console.log("Sign in with Google")
 }
 
 function authSignInWithEmail() {
-    console.log("Sign in with email and password")
+  console.log("Sign in with email and password")
+  const email = emailInputEl.value
+  const password= passwordInputEl.value 
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    showLoggedInView()
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 }
 
 function authCreateAccountWithEmail() {
-    console.log("Sign up with email and password")
-    const email = emailInputEl.value
-    const password= passwordInputEl.value 
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        showLoggedInView()
-        })
-        .catch((error) => {
-            console.error(error.message)
-        });
+  console.log("Sign up with email and password")
+  const email = emailInputEl.value
+  const password= passwordInputEl.value 
+  createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+      showLoggedInView()
+      })
+      .catch((error) => {
+          console.error(error.message)
+      });
 }
 
 function authSignOut(){
-   
-    signOut(auth).then(() => {
-        showLoggedInView()
-        
-      }).catch((error) => {
-         console.error(error.message)
-      });
+  signOut(auth).then(() => {
+      showLoggedOutView()
+    }).catch((error) => {
+       console.error(error.message)
+    });
 }
 
 /* == Functions - UI Functions == */
 
 function showLoggedOutView() {
-    hideElement(viewLoggedIn)
-    showElement(viewLoggedOut)
+  hideElement(viewLoggedIn)
+  showElement(viewLoggedOut)
 }
 
 function showLoggedInView() {
-    hideElement(viewLoggedOut)
-    showElement(viewLoggedIn)
+  hideElement(viewLoggedOut)
+  showElement(viewLoggedIn)
 }
 
 function showElement(element) {
-    element.style.display = "flex"
+  element.style.display = "flex"
 }
 
 function hideElement(element) {
-    element.style.display = "none"
+  element.style.display = "none"
 }
 
 
